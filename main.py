@@ -1,0 +1,29 @@
+# NH 2nd Financial Calculator
+# Imports for team modules and CSV handling
+from briggs import *
+from dean import *
+from elijah import *
+from nate import *
+import csv
+	#   Make the main menu function
+def main_menu(self):
+while True:
+            print("__________________")
+            print("|   MAIN MENU    |")
+            print("------------------")
+  # welcome user
+#print  each option ex:income budgeting, data visualizer
+# display the options           
+#user input asking which option
+#if statements corresponding to user input, call other functions
+choice = input("Would you like to \n1. Track Savings Goal\n2. Check Budget Limit\n3. Add Budget :Limit\n4. ")
+if choice == "1":
+    pass
+elif choice == "2":
+    pass
+elif choice == "3":
+    pass
+elif choice == "4":
+    pass
+else:
+    print("That is not an option. Please try again")
