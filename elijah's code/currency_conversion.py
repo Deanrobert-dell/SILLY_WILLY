@@ -1,8 +1,5 @@
 #EHCP2 currency conversion
 from currex import *
 
-money = Currency("USD", 100)
-
-money.to("EUR")
-
-print(money)
+def currency_conversion(income):
+    choice = input("Would you like to convert your USD to another currency\nEuros\nPounds\nIranian Rials\nand a few more\n")
