@@ -1,29 +1,29 @@
 # NH, BH, EH, DP 2nd Financial Calculator
 # Imports for team modules and CSV handling
-from briggs import *
-from dean import *
-from elijah import *
-from nate import *
+from BriggsCode import *
+from DeanCode import *
+from NateCode import *
+from BriggsCode.briggs import *
 import csv
 	#   Make the main menu function
 def main_menu(self):
-while True:
-            print("__________________")
-            print("|   MAIN MENU    |")
-            print("------------------")
-  # welcome user
-#print  each option ex:income budgeting, data visualizer
-# display the options           
-#user input asking which option
-#if statements corresponding to user input, call other functions
-choice = input("Would you like to \n1. Track Savings Goal\n2. Check Budget Limit\n3. Add Budget Limit\n4. ")
-if choice == "1":
-    track_savings_goal()
-elif choice == "2":
-    check_budget_limit()
-elif choice == "3":
-    add_budget_limit()
-elif choice == "4":
-    pass
-else:
-    print("That is not an option. Please try again")
+    while True:
+        print("__________________")
+        print("|   MAIN MENU    |")
+        print("------------------")
+    # welcome user
+    #print  each option ex:income budgeting, data visualizer
+    # display the options           
+    #user input asking which option
+    #if statements corresponding to user input, call other functions
+        choice = input("Would you like to \n1. Track Savings Goal\n2. Check Budget Limit\n3. Add Budget Limit\n4. ")
+        if choice == "1":
+            track_savings_goal()
+        elif choice == "2":
+            check_budget_limit(categories)
+        elif choice == "3":
+            add_budget_limit(categories)
+        elif choice == "4":
+            pass
+        else:
+            print("That is not an option. Please try again")
