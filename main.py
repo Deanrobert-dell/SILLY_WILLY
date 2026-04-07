@@ -16,13 +16,13 @@ while True:
 # display the options           
 #user input asking which option
 #if statements corresponding to user input, call other functions
-choice = input("Would you like to \n1. Track Savings Goal\n2. Check Budget Limit\n3. Add Budget :Limit\n4. ")
+choice = input("Would you like to \n1. Track Savings Goal\n2. Check Budget Limit\n3. Add Budget Limit\n4. ")
 if choice == "1":
-    pass
+    track_savings_goal()
 elif choice == "2":
-    pass
+    check_budget_limit()
 elif choice == "3":
-    pass
+    add_budget_limit()
 elif choice == "4":
     pass
 else:
