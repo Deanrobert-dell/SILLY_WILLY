@@ -1,7 +1,7 @@
 # NH, BH, EH, DP 2nd Financial Calculator
 # Imports for team modules and CSV handling
 from DeanCode.pichart import *
-from DeanCode.deanline_graph import *
+from DeanCode.line_graph import *
 from DeanCode.csv1 import *
 from NateCode.nate import *
 from BriggsCode.briggs import *
