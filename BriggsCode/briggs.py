@@ -25,3 +25,7 @@ def add_budget_limit(categories):
 		print(“That category does not exist.”)
 		return
 	If categories['category_needing_budget'] != “None”:
+		print(“A budget already exists for that category.”)
+		return
+	limit = input(“What's the budget limit you want for this category (Please do not add the dollar sign in your amount)?”)
+	categories['category_needing_budget'] = limit
