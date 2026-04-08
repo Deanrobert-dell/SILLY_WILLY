@@ -12,3 +12,9 @@ A simple finance calculator application designed to help with quick financial ca
 1. Clone the repository
 2. Install dependencies
 3. Run the application
+
+## Contributors
+- Briggs Hardy / Team Leader
+- Elijah Hawkins / Content Area Expert
+- Dean Peterson / Lead Programmer
+- Nathan Hasson / UI/UX Designer
