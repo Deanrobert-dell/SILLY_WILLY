@@ -1,6 +1,7 @@
 import csv
 from datetime import datetime
-
+from elijah's code.expense_management import *
+from folder_name.file_name import function_name
 
 """Csv
 Take income from Elijah's list and append it to a csv file
@@ -21,6 +22,6 @@ categories (user input, list)
 
 with open('expenses.csv', mode='a', newline='') as file:
     writer = csv.writer(file)
-    
+
     writer.writerow(['New Name', 'New Value', '2024'])
 
