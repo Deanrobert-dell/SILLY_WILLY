@@ -1,3 +1,7 @@
+import csv
+from datetime import datetime
+
+
 """Csv
 Take income from Elijah's list and append it to a csv file
 Take expenses and import them, keep them in categories
@@ -12,3 +16,11 @@ Match each income and expense with date
 csv: expenses.csv, profiles.csv, income.csv etc.
 categories (user input, list)
 """
+
+
+
+with open('expenses.csv', mode='a', newline='') as file:
+    writer = csv.writer(file)
+    
+    writer.writerow(['New Name', 'New Value', '2024'])
+
