@@ -6,7 +6,7 @@ categories = [
 ]
 def track_savings_goal():
 	with open('user_profiles.csv', mode='r') as f:
-    	current_money = csv.DictReader(f)
+		current_money = csv.DictReader(f)
 	necessary_money = input("How much money would you like to save up to?")
 	savings_time = input("How long are you going to save for (in months)?")
 	total = (necessary_money - current_money) / savings_time
@@ -26,8 +26,8 @@ def add_budget_limit(categories):
 	if not categories['category_needing_budget']:
 		print("That category does not exist.")
 		return
-	If categories['category_needing_budget'] != “None”:
-		print(“A budget already exists for that category.”)
+	if categories['category_needing_budget'] != "None":
+		print("A budget already exists for that category.")
 		return
-	limit = input(“What's the budget limit you want for this category (Please do not add the dollar sign in your amount)?”)
+	limit = input("What's the budget limit you want for this category (Please do not add the dollar sign in your amount)?")
 	categories['category_needing_budget'] = limit
