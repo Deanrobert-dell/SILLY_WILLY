@@ -5,8 +5,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Sample data: months, incomes, and expenses
+
 months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']
+
 income_data = [5000, 5200, 4800, 5500, 5300, 5600]
+
 expense_data = [3000, 3100, 2900, 3200, 3100, 3400]
 #CHANGE LATER TO BE FROM CSV FILE
 
