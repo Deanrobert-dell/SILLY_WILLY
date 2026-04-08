@@ -1,10 +1,12 @@
 #BH 2nd Ortho
+import csv
 categories = [
 	{
 }
 ]
 def track_savings_goal():
-	current_money = #FROM CSV#
+	with open('user_profiles.csv', mode='r') as f:
+    	current_money = csv.DictReader(f)
 	necessary_money = input("How much money would you like to save up to?")
 	savings_time = input("How long are you going to save for (in months)?")
 	total = (necessary_money - current_money) / savings_time

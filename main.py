@@ -1,9 +1,10 @@
 # NH, BH, EH, DP 2nd Financial Calculator
 # Imports for team modules and CSV handling
-from BriggsCode import *
-from DeanCode import *
-from NateCode import *
+from DeanCode.dean import *
+from NateCode.nate import *
 from BriggsCode.briggs import *
+from ElijahCode.currency_conversion import *
+from ElijahCode.expense_management import *
 import csv
 	#   Make the main menu function
 def main_menu(self):
