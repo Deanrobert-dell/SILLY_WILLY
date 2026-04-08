@@ -1,18 +1,9 @@
 #EHCP2 expenses
-from currency_conversion import currency_conversion
-from currex import *
 
-def inputs():
-    while True:
-        try:
-            budget = Currency('USD', float(input("What is your total monthly income?\n")))
-            if budget <= 0:
-                pass
-            if budget > 0:
-                currency_conversion(budget)
-                return budget
-        except ValueError:
-            print("That ain't a budget!")
+from currency_conversion import currency_conversion
 
 def expenses():
-    
+    try:
+        monthly_income = float(input("What is your total monthly income?\n"))
+    except ValueError:
+        print("That ain't a number")
