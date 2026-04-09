@@ -1,6 +1,8 @@
-# NH 2ND MAIN MENU FOR FINANCE CALCULATOR
 # NH, BH, EH, DP 2nd Financial Calculator
 # Imports for team modules and CSV handling
+from DeanCode.pichart import *
+from DeanCode.line_graph import *
+from DeanCode.csv1 import *
 from DeanCode import *
 from NateCode.nate import *
 from BriggsCode.briggs import *
@@ -18,7 +20,7 @@ def main_menu(self):
     # display the options           
     #user input asking which option
     #if statements corresponding to user input, call other functions
-        choice = input("Would you like to \n1. Track Savings Goal\n2. Check Budget Limit\n3. Add Budget Limit\n4. ")
+        choice = input("Would you like to \n1. Track Savings Goal\n2. Check Budget Limit\n3. Add Budget Limit\n4. Currency Conversion\nE. Exit")
         if choice == "1":
             track_savings_goal()
         elif choice == "2":
@@ -27,5 +29,7 @@ def main_menu(self):
             add_budget_limit(categories)
         elif choice == "4":
             pass
+        elif choice == "5":
+            break
         else:
             print("That is not an option. Please try again")
