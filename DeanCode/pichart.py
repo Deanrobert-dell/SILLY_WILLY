@@ -10,7 +10,7 @@ sizes = [35, 25, 25, 15]
 plt.pie(sizes, labels=labels)
 
 # Display the chart
-plt.show()
+#plt.show()
 
 
 """import pandas as pd
