@@ -1,5 +1,10 @@
 #EHCP2 currency conversion
-from forex_python.converter import CurrencyRates
+while True:
+    try:
+        from forex_python.converter import CurrencyRates
+        break
+    except ImportError:
+        print("Cannot import the module forex_python, you need to do 'pip install forex_python'")
 
 def currency_conversion(income):
     c = CurrencyRates()

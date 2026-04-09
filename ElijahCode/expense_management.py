@@ -1,5 +1,7 @@
 #EHCP2 expenses
 
+import csv
+
 from currency_conversion import *
 
 import time as t
@@ -34,9 +36,14 @@ def expenses(income):
             elif total_expense == income:
                 print("You have exactly matched your income! Great calculation!")
                 print(f"You entered this on {time_entered}")
+                return total_expense, income, time_entered
             else:
                 print("You still have some money left to spend!\nEither you got a big income, or a big brain!")
                 print(f"You entered this on {time_entered}")
+                return total_expense, income, time_entered
         except ValueError:
             print("That ain't a number bro")
-income()
+
+def add_to_csv():
+    with open("csvfiles/Expenses.csv", "a", newline=""):
+        writer = csv.DictWriter()
