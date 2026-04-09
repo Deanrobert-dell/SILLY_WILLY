@@ -2,14 +2,6 @@
 import csv
 
 class FinancialCalculator:
-    # Make the main menu function
-    def main_menu(self):
-        while True:
-            print("__________________")
-            print("|   MAIN MENU    |")
-            print("------------------")
-            # welcome user
-
     # Make the register function!
     def login(self):
                 while True:
