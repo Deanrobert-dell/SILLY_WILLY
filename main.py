@@ -6,6 +6,7 @@ from DeanCode import *
 from Nate import *
 from BriggsCode.briggs import *
 from ElijahCode.expense_management import income
+from Nate import *
 import csv
 	#   Make the main menu function
 
@@ -46,4 +47,3 @@ while True:
             break
         else:
             print("That is not an option. Please try again.")
-main_menu()
