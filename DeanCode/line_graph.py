@@ -5,12 +5,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Sample data: months, incomes, and expenses
-
+#take months from csv through datetime and amount is income-expenses for y axis
 months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']
 
-income_data = [5000, 5200, 4800, 5500, 5300, 5600]
-
-expense_data = [3000, 3100, 2900, 3200, 3100, 3400]
+net_income = []
 #CHANGE LATER TO BE FROM CSV FILE
 
 
