@@ -1,9 +1,9 @@
 # NH, BH, EH, DP 2nd Financial Calculator
 # Imports for team modules and CSV handling
 from DeanCode.pichart import *
-from DeanCode.line_graph import *
 from DeanCode.csv1 import *
-from NateCode.nate import *
+from DeanCode import *
+from Nate import *
 from BriggsCode.briggs import *
 from ElijahCode.expense_management import income
 import csv
@@ -25,12 +25,15 @@ def main_menu():
         print("__________________")
         print("|   MAIN MENU    |")
         print("------------------")
+main_menu()
     # welcome user
+print("Welcome user!")
+while True:
     #print  each option ex:income budgeting, data visualizer
     # display the options           
     #user input asking which option
     #if statements corresponding to user input, call other functions
-        choice = input("What would you like to do? \n1. Create Savings Goal\n2. Check Budget Limit\n3. Add Budget Limit\n4. Expense Management\nE. Exit\n")
+        choice = input("What would you like to do? \n1. Create Savings Goal\n2. Check Budget Limit\n3. Add Budget Limit\n4. Expense Management\nE. Exit\n").strip()
         if choice == "1":
             create_savings_goal(user_id)
         elif choice == "2":
