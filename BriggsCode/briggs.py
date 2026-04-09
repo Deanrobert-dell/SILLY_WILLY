@@ -1,13 +1,10 @@
 #BH 2nd Ortho
 import csv
-
 def create_savings_goal(user_id):
 	matching_user_profile = None
-	
 	try:
 		with open('csvfiles/user_profiles.csv', mode='r') as f:
 			user_profiles = csv.DictReader(f)
-			
 			for row in user_profiles:
 				if row["user"] == user_id:
 					matching_user_profile = row
@@ -16,11 +13,9 @@ def create_savings_goal(user_id):
 	except:
 		print("There was an error reading the user profiles. Please check the file and try again.")
 		return
-
 	if matching_user_profile is None:
 		print(f"The user {user_id} does not exist.")
 		return
-	
 	necessary_money = input("How much money would you like to save up to (please do not add the dollar sign in your amount)?\n")
 	necessary_money = validate_float_input(necessary_money)
 	savings_time = input("How long are you going to save for (in months)?\n")
@@ -34,19 +29,15 @@ def check_budget_limit(user_id, categories, expenses):
 		return
 	selected_category = select_from_list(categories, "Which of the above categories would you like to check your budget for?\n")
 	budgets = read_budgets()
-
 	matching_budget = None
-	
 	for budget in budgets:
 		if budget["user"] == user_id and budget["category"] == selected_category:
 			matching_budget = budget
 			matching_budget["limit"] = float(matching_budget["limit"])
 			break
-	
 	if matching_budget is None:
 		print("No budget has been set for that category.")
 		return
-
 	this_month_expenses = 0
 	for expense in expenses:
 		# update this to check for the current month and year instead of hardcoding it
@@ -60,14 +51,12 @@ def add_budget_limit(user_id, categories):
 		print("Add a category first.")
 		return
 	selected_category = select_from_list(categories, "Which of the above categories would you like to add a budget for (please do not add the dollar sign in your amount)?\n")
-
 	budgets = read_budgets()
 
 	for budget in budgets:
 		if budget["user"] == user_id and budget["category"] == selected_category:
 			print("A budget already exists for that category.")
 			return
-	
 	limit = input("What's the monthly budget limit you want for this category (please do not add the dollar sign in your amount)?\n")
 	limit = validate_float_input(limit)
 	append_budget(user_id, selected_category, limit)

@@ -17,4 +17,4 @@ A simple finance calculator application designed to help with quick financial ca
 - Briggs Hardy / Team Leader
 - Elijah Hawkins / Content Area Expert
 - Dean Peterson / Lead Programmer
-- Nathan Hasson / UI/UX Designer
+- Nathan Hasson / UI-UX Designer

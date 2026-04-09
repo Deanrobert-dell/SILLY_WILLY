@@ -5,8 +5,7 @@ from DeanCode.line_graph import *
 from DeanCode.csv1 import *
 from NateCode.nate import *
 from BriggsCode.briggs import *
-#from ElijahCode.currency_conversion import *
-from ElijahCode.expense_management import *
+from ElijahCode.expense_management import income
 import csv
 	#   Make the main menu function
 
@@ -31,7 +30,7 @@ def main_menu():
     # display the options           
     #user input asking which option
     #if statements corresponding to user input, call other functions
-        choice = input("What would you like to do? \n1. Create Savings Goal\n2. Check Budget Limit\n3. Add Budget Limit\n4. Currency Conversion\nE. Exit\n")
+        choice = input("What would you like to do? \n1. Create Savings Goal\n2. Check Budget Limit\n3. Add Budget Limit\n4. Expense Management\nE. Exit\n")
         if choice == "1":
             create_savings_goal(user_id)
         elif choice == "2":
@@ -39,7 +38,7 @@ def main_menu():
         elif choice == "3":
             add_budget_limit(user_id, categories)
         elif choice == "4":
-            print("This option hasn't been added yet, try again tomorrow 11 AM.")
+            income()
         elif choice == "E":
             break
         else:
