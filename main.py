@@ -9,7 +9,7 @@ from ElijahCode.currency_conversion import *
 from ElijahCode.expense_management import *
 import csv
 	#   Make the main menu function
-def main_menu(self):
+def main_menu():
     while True:
         print("__________________")
         print("|   MAIN MENU    |")

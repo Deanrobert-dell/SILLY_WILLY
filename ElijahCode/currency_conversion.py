@@ -1,8 +1,6 @@
 #EHCP2 currency conversion
 from forex_python.converter import CurrencyRates
 
-income = 100
-
 def currency_conversion(income):
     c = CurrencyRates()
     choice = input("Would you like to convert your money to another currency?\nEuros\nPounds\nand a few more\ny or n\n")
@@ -19,9 +17,7 @@ def currency_conversion(income):
             new_amount = income * rate
 
             print(f"Your new currency amount in {new_currency} is {new_amount:.2f}")
-            new_amount = income
+            return new_amount
 
         elif choice == "n":
             break
-
-currency_conversion(income)
