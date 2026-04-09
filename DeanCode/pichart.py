@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
 
 # Data to plot
+#data should be from csv file but for now just hard coded
+#categoris is a column in csv file and amount is another column in csv file
 labels = ['entertainment', 'food', 'gas', 'rent']
 sizes = [35, 25, 25, 15]
 
