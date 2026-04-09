@@ -1,4 +1,4 @@
-import matplotlib.pyplot as plt
+import matplotlib_inline as plt
 
 # Data to plot
 #data should be from csv file but for now just hard coded
