@@ -1,4 +1,4 @@
-#NH
+#NH Main for Finance manager
 import tkinter as tk
 from tkinter import messagebox
 
