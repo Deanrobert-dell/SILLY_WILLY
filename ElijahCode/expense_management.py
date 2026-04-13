@@ -1,49 +1,61 @@
 #EHCP2 expenses
-
-import csv
-
+import time as t
 from currency_conversion import *
 
-import time as t
+class FinanceManager:
+    def __init__(self):
+        self.monthly_income = 0
+        self.time_entered = None
+        self.currency = "USD"
 
-def income():
-    while True:
-        try:
-            monthly_income = float(input("What is your total monthly income?\nDon't enter a dollar sign\n"))
-            if monthly_income <= 0:
-                print("Bro we all know you have an income")
-                #i'll connect it to the main menu soonish
-                return
-            else:
-                new_amount = currency_conversion(monthly_income)
-                expenses(new_amount)
-        except ValueError:
-            print("That ain't a number")
+    def get_currency(self):
+        self.currency = input("Enter your preferred currency (e.g., USD, EUR, GBP): ").upper()
+        self.get_income()
 
-def expenses(income):
-    time_entered = t.ctime()
-    while True:
-        try:
-            transportation = float(input("What is your monthly cost for transportation?\n"))
-            food = float(input("What is your monthly cost for food?\n"))
-            housing = float(input("What is the cost of your housing per month?\ne.g. property taxes or rent\n"))
-            extra_stuff = float(input("What is the cost of your frivolous stuff?\n"))
-            total_expense = transportation + food + housing + extra_stuff
-            if total_expense > income:
-                print(f"You have exceeded your monthly income (${income}) with these expenses")
-                print("You must re_calculate your expenses")
-                continue
-            elif total_expense == income:
-                print("You have exactly matched your income! Great calculation!")
-                print(f"You entered this on {time_entered}")
-                return total_expense, income, time_entered
-            else:
-                print("You still have some money left to spend!\nEither you got a big income, or a big brain!")
-                print(f"You entered this on {time_entered}")
-                return total_expense, income, time_entered
-        except ValueError:
-            print("That ain't a number bro")
+    def get_income(self):
+        while True:
+            try:
+                amount = float(input(f"What is your total monthly income in {self.currency}?\n(No symbols): "))
+                if amount <= 0:
+                    print("Bro, we all know you have an income.")
+                    continue
+                self.monthly_income = amount
+                self.get_expenses()
+                break
+            except ValueError:
+                print("That ain't a number.")
 
-def add_to_csv():
-    with open("csvfiles/Expenses.csv", "a", newline=""):
-        writer = csv.DictWriter()
+    def get_expenses(self):
+        while True:
+            try:
+                trans = float(input("Monthly cost for transportation?: "))
+                food = float(input("Monthly cost for food?: "))
+                housing = float(input("Monthly cost for housing?: "))
+                extra = float(input("Monthly cost for frivolous stuff?: "))
+                
+                self.time_entered = t.ctime()
+                total_expense = trans + food + housing + extra
+                self.calculate_balance(total_expense)
+                break
+            except ValueError:
+                print("That ain't a number. Try again.")
+
+    def calculate_balance(self, total_expense):
+        income = self.monthly_income
+        remainder = income - total_expense
+        
+        conv_income = convert(income, self.currency)
+        conv_expense = convert(total_expense, self.currency)
+        conv_diff = convert(abs(remainder), self.currency)
+
+        print(f"\n--- Results ({self.currency}) (Recorded: {self.time_entered}) ---")
+        
+        if total_expense > income:
+            print(f"You exceeded your income ({conv_income}) by {conv_diff}!")
+        elif total_expense == income:
+            print("You matched your income exactly! Perfect balance.")
+        else:
+            print(f"You have {conv_diff} left over.")
+
+user_finance = FinanceManager()
+user_finance.get_currency()
