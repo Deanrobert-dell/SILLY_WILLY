@@ -1,4 +1,4 @@
-import matplotlib_inline as plt
+import matplotlib.pyplot as plt
 
 # Data to plot
 #data should be from csv file but for now just hard coded
@@ -10,7 +10,7 @@ sizes = [35, 25, 25, 15]
 plt.pie(sizes, labels=labels)
 
 # Display the chart
-#plt.show()
+plt.show()
 
 
 """import pandas as pd
@@ -31,3 +31,26 @@ plt.axis('equal') # Ensure pie is circular
 
 # 4. Display
 plt.show()"""
+
+
+
+import tkinter as tk
+
+# Create the main window
+root = tk.Tk()
+root.title("test")
+root.geometry("500x150")  # Width x Height
+
+# Add a Label widget
+label = tk.Label(root, text="click to acknowledge you accept TOS of finance calc", font=("Arial", 14))
+label.pack(pady=20)  # Add padding around the label
+
+
+#close gui window when clicked
+def on_click():
+    root.destroy()
+    print("terms accepted")
+btn = tk.Button(root, text="click me", command=on_click)
+btn.pack()
+# Start the application
+root.mainloop()
