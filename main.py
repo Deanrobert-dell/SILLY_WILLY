@@ -50,15 +50,22 @@ def main_menu_gui():
         # Calls Elijah's income function
         income()
 
-    # --- UI Buttons ---
-    btn_style = {"width": 25, "pady": 10, "font": ("Arial", 10)}
+    # --- Create Menu Bar ---
+    menubar = tk.Menu(root)
+    root.config(menu=menubar)
 
-    tk.Button(root, text="1. Create Savings Goal", command=handle_savings, **btn_style).pack(pady=5)
-    tk.Button(root, text="2. Check Budget Limit", command=handle_check_budget, **btn_style).pack(pady=5)
-    tk.Button(root, text="3. Add Budget Limit", command=handle_add_budget, **btn_style).pack(pady=5)
-    tk.Button(root, text="4. Expense Management", command=handle_expense_mgmt, **btn_style).pack(pady=5)
+    # File Menu
+    file_menu = tk.Menu(menubar, tearoff=0)
+    menubar.add_cascade(label="File", menu=file_menu)
+    file_menu.add_command(label="Exit", command=root.quit)
 
-    tk.Button(root, text="Exit", command=root.quit, fg="red", width=15).pack(pady=20)
+    # Operations Menu
+    ops_menu = tk.Menu(menubar, tearoff=0)
+    menubar.add_cascade(label="Operations", menu=ops_menu)
+    ops_menu.add_command(label="Create Savings Goal", command=handle_savings)
+    ops_menu.add_command(label="Check Budget Limit", command=handle_check_budget)
+    ops_menu.add_command(label="Add Budget Limit", command=handle_add_budget)
+    ops_menu.add_command(label="Expense Management", command=handle_expense_mgmt)
 
     # Start the GUI loop
     root.mainloop()
