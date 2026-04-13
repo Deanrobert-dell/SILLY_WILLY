@@ -1,4 +1,4 @@
-import matplotlib.pyplot as plt
+import matplotlib_inline as plt
 
 # Data to plot
 #data should be from csv file but for now just hard coded
@@ -10,7 +10,7 @@ sizes = [35, 25, 25, 15]
 plt.pie(sizes, labels=labels)
 
 # Display the chart
-plt.show()
+#plt.show()
 
 
 """import pandas as pd
