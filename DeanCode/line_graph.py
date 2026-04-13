@@ -5,10 +5,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Sample data: months, incomes, and expenses
-#take months from csv through datetime and amount is income-expenses for y axis
+
 months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']
 
-net_income = []
+income_data = [5000, 5200, 4800, 5500, 5300, 5600]
+
+expense_data = [3000, 3100, 2900, 3200, 3100, 3400]
 #CHANGE LATER TO BE FROM CSV FILE
 
 
@@ -31,4 +33,4 @@ plt.legend()
 plt.grid(True)
 
 # 4. Show the plot
-plt.show()
+#plt.show()
