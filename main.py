@@ -1,3 +1,4 @@
+#NH
 import tkinter as tk
 from tkinter import messagebox
 
@@ -24,7 +25,7 @@ def main_menu_gui():
     # Create the main window
     root = tk.Tk()
     root.title("NH, BH, EH, DP Financial Calculator")
-    root.geometry("400x450")
+    root.geometry("400x550")
     root.configure(padx=20, pady=20)
 
     # Header Label
@@ -49,6 +50,25 @@ def main_menu_gui():
     def handle_expense_mgmt():
         # Calls Elijah's income function
         income()
+
+    # --- Button Frame ---
+    button_frame = tk.Frame(root)
+    button_frame.pack(pady=20)
+
+    button_savings = tk.Button(button_frame, text="Create Savings Goal", command=handle_savings, width=25, pady=10)
+    button_savings.pack(pady=5)
+
+    button_check = tk.Button(button_frame, text="Check Budget Limit", command=handle_check_budget, width=25, pady=10)
+    button_check.pack(pady=5)
+
+    button_add = tk.Button(button_frame, text="Add Budget Limit", command=handle_add_budget, width=25, pady=10)
+    button_add.pack(pady=5)
+
+    button_expense = tk.Button(button_frame, text="Expense Management", command=handle_expense_mgmt, width=25, pady=10)
+    button_expense.pack(pady=5)
+
+    button_exit = tk.Button(button_frame, text="Exit", command=root.quit, width=25, pady=10, bg="red", fg="white")
+    button_exit.pack(pady=5)
 
     # --- Create Menu Bar ---
     menubar = tk.Menu(root)
