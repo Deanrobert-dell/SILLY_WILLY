@@ -60,7 +60,8 @@ def main_menu_gui():
 
     button_check = tk.Button(button_frame, text="Check Budget Limit", command=handle_check_budget, width=25, pady=10)
     button_check.pack(pady=5)
-
+    def handle_check_budget():
+        func_name()
     button_add = tk.Button(button_frame, text="Add Budget Limit", command=handle_add_budget, width=25, pady=10)
     button_add.pack(pady=5)
 
