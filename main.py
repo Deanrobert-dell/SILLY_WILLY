@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 
-# --- Your existing logic and imports ---
+# --- The existing logic and imports ---
 # (Keep your imports and data lists at the top as they were)
 user_id = "abc123"
 categories = ["food", "entertainment", "gas", "rent"]
