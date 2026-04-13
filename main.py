@@ -5,7 +5,20 @@ from tkinter import messagebox
 # (Keep your imports and data lists at the top as they were)
 user_id = "abc123"
 categories = ["food", "entertainment", "gas", "rent"]
-expenses = [ # ... your expense data ... ]
+expenses = []
+
+# Placeholder functions (replace with actual implementations)
+def create_savings_goal(user_id):
+    messagebox.showinfo("Savings Goal", f"Creating savings goal for {user_id}")
+
+def check_budget_limit(user_id, categories, expenses):
+    messagebox.showinfo("Budget Check", f"Checking budget for {user_id}")
+
+def add_budget_limit(user_id, categories):
+    messagebox.showinfo("Add Budget", f"Adding budget limit for {user_id}")
+
+def income():
+    messagebox.showinfo("Expense Management", "Opening expense management")
 
 def main_menu_gui():
     # Create the main window
@@ -44,7 +57,7 @@ def main_menu_gui():
     tk.Button(root, text="2. Check Budget Limit", command=handle_check_budget, **btn_style).pack(pady=5)
     tk.Button(root, text="3. Add Budget Limit", command=handle_add_budget, **btn_style).pack(pady=5)
     tk.Button(root, text="4. Expense Management", command=handle_expense_mgmt, **btn_style).pack(pady=5)
-    
+
     tk.Button(root, text="Exit", command=root.quit, fg="red", width=15).pack(pady=20)
 
     # Start the GUI loop
