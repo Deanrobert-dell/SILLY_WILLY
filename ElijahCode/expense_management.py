@@ -1,6 +1,6 @@
 #EHCP2 expenses
 
-from currency_conversion import *
+from .currency_conversion import currency_conversion
 
 import time as t
 
@@ -39,4 +39,4 @@ def expenses(income):
                 print(f"You entered this on {time_entered}")
         except ValueError:
             print("That ain't a number bro")
-income()
+# income()

@@ -1,24 +1,12 @@
 import tkinter as tk
-from tkinter import messagebox
+from BriggsCode.briggs import *
+from ElijahCode.expense_management import income
 
 # --- The existing logic and imports ---
 # (Keep your imports and data lists at the top as they were)
 user_id = "abc123"
-categories = ["food", "entertainment", "gas", "rent"]
+categories = []
 expenses = []
-
-# Placeholder functions (replace with actual implementations)
-def create_savings_goal(user_id):
-    messagebox.showinfo("Savings Goal", f"Creating savings goal for {user_id}")
-
-def check_budget_limit(user_id, categories, expenses):
-    messagebox.showinfo("Budget Check", f"Checking budget for {user_id}")
-
-def add_budget_limit(user_id, categories):
-    messagebox.showinfo("Add Budget", f"Adding budget limit for {user_id}")
-
-def income():
-    messagebox.showinfo("Expense Management", "Opening expense management")
 
 def main_menu_gui():
     # Create the main window
