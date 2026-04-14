@@ -1,33 +1,84 @@
-import matplotlib_inline as plt
-
-# Data to plot
-#data should be from csv file but for now just hard coded
-#categoris is a column in csv file and amount is another column in csv file
-labels = ['entertainment', 'food', 'gas', 'rent']
-sizes = [35, 25, 25, 15]
-
-# Create the pie chart
-plt.pie(sizes, labels=labels)
-
-# Display the chart
-#plt.show()
-
-
-"""import pandas as pd
 import matplotlib.pyplot as plt
+from collections import defaultdict
 
-# 1. Load data
-df = pd.read_csv('medal_data.csv')
+from DeanCode.csv1 import read_expenses
+# all imports ^
+def totals(expenses):
+  #by cat 1s
+    category_totals = defaultdict(float)
+    
+    for expense in expenses:
+        category = expense['category']
 
-# 2. Extract columns
-labels = df["country"]
-sizes = df["gold_medal"]
+        amount = expense['amount']
+        category_totals[category] += amount
+    
+    return dict(category_totals)
 
-# 3. Create pie chart
-plt.figure(figsize=(8, 8)) # Set figure size for better readability
-plt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=140)
-plt.title("Gold Medal Distribution")
-plt.axis('equal') # Ensure pie is circular
+def plot1(user_id=None):
+   #chart by cat
+    # Read expenses
+    expenses = read_expenses(user_id)
+    
+    if not expenses:
+        print("No expenses found to plot.") #nomplots findem
+        return
+    
+    # Calculate category totals
+    category_totals = totals(expenses)
+    
 
-# 4. Display
-plt.show()"""
+
+
+    if not category_totals:
+        print("Could not process expense data.")
+        return
+    
+    # Prepare data for pie chart
+    categories = list(category_totals.keys())
+    amounts = list(category_totals.values())
+    
+    # Create color palette
+    colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', '#98D8C8', '#F7DC6F', '#BB8FCE', '#85C1E2'] #fire colorss??
+    colors = colors[:len(categories)]
+    
+    # Create pie chart
+    fig, ax = plt.subplots(figsize=(10, 8))
+    
+    wedges, texts, autotexts = ax.pie(
+        amounts,
+        labels=categories,
+        autopct='%1.1f%%',
+        colors=colors,#colors for each slice
+        #
+        startangle=90,
+        textprops={'fontsize': 11}
+    )
+    
+    # Enhance text appearance
+    for autotext in autotexts:
+        autotext.set_color('white')
+        autotext.set_fontweight('bold')
+        autotext.set_fontsize(10)
+    
+    # Add title
+    total_expenses = sum(amounts)
+    ax.set_title(
+        f' by category total ${total_expenses:.2f}',
+        fontsize=14,
+        fontweight='bold',
+        pad=20
+    )
+    
+    # Add legend with amounts
+    legend_labels = [f'{cat}: ${amount:.2f}' for cat, amount in category_totals.items()] #
+
+    ax.legend(legend_labels, loc='center left', bbox_to_anchor=(1, 0, 0.5, 1), fontsize=10) #legend outside
+
+    
+    plt.tight_layout()
+    plt.show()
+
+if __name__ == "__main__":
+    # Example usage
+    plot1(user_id="abc123")
