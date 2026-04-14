@@ -7,14 +7,14 @@ class FinancialCalculator:
     def login(self):
                 while True:
                     print("Welcome back!")
-                    username = input("Please enter your username: ").strip()
+                    user_id = input("Please enter your username: ").strip()
     
                     #Logic to check user_registrations.csv for username
-                    if self.check_credentials(username, mode="user"):
+                    if self.check_credentials(user_id, mode="user"):
                         print("Verified!")
                         password = input("Now enter password: ")
                         # Logic to check password match in CSV
-                        if self.check_credentials(username, password, mode="password"):
+                        if self.check_credentials(user_id, password, mode="password"):
                             print("Perfect! You're good to go!")
                             self.main_menu()
                             break
