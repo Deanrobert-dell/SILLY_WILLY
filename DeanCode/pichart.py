@@ -2,24 +2,20 @@ import matplotlib.pyplot as plt
 from collections import defaultdict
 from DeanCode.csv1 import read_expenses
 
-def calculate_category_totals(expenses):
-    """Calculate total expenses by category."""
+def totals(expenses):
+  #by cat 1s
     category_totals = defaultdict(float)
     
     for expense in expenses:
         category = expense['category']
+
         amount = expense['amount']
         category_totals[category] += amount
     
     return dict(category_totals)
 
-def plot_expense_pie_chart(user_id=None):
-    """
-    Create a pie chart showing expense breakdown by category.
-    
-    Args:
-        user_id: Optional filter by user
-    """
+def plot1(user_id=None):
+   #chart by cat
     # Read expenses
     expenses = read_expenses(user_id)
     
@@ -28,8 +24,11 @@ def plot_expense_pie_chart(user_id=None):
         return
     
     # Calculate category totals
-    category_totals = calculate_category_totals(expenses)
+    category_totals = totals(expenses)
     
+
+
+
     if not category_totals:
         print("Could not process expense data.")
         return
@@ -73,9 +72,10 @@ def plot_expense_pie_chart(user_id=None):
     legend_labels = [f'{cat}: ${amount:.2f}' for cat, amount in category_totals.items()]
     ax.legend(legend_labels, loc='center left', bbox_to_anchor=(1, 0, 0.5, 1), fontsize=10)
     
+    
     plt.tight_layout()
     plt.show()
 
 if __name__ == "__main__":
     # Example usage
-    plot_expense_pie_chart(user_id="abc123")
+    plot1(user_id="abc123")

@@ -2,10 +2,12 @@ import csv
 from datetime import datetime
 from ElijahCode.expense_management import *
 
-def initialize_expenses_csv():
-    """Create the expenses.csv file with headers if it doesn't exist."""
+def excsv():
+    #add headers
     try:
         with open('expenses.csv', mode='r') as file:
+
+            
             reader = csv.reader(file)
             # Check if file has headers
             first_row = next(reader, None)
@@ -17,7 +19,7 @@ def initialize_expenses_csv():
             writer.writerow(['user', 'category', 'amount', 'date'])
 
 def add_expense(user_id, category, amount, date=None):
-    """Add an expense entry to the CSV file."""
+    #expenses
     if date is None:
         date = datetime.now().strftime('%Y-%m-%d')
     
@@ -32,7 +34,7 @@ def add_expense(user_id, category, amount, date=None):
         return False
 
 def read_expenses(user_id=None):
-    """Read all expenses from CSV, optionally filtered by user_id."""
+   #filters with user
     expenses = []
     try:
         with open('expenses.csv', mode='r') as file:
@@ -47,33 +49,34 @@ def read_expenses(user_id=None):
                             'date': row['date']
                         })
     except FileNotFoundError:
-        print("expenses.csv not found. Please initialize it first.")
+        print("not found")
     except Exception as e:
         print(f"Error reading expenses.csv: {e}")
     
     return expenses
 
-def import_expenses_from_input():
-    """Interactive function to add expenses from user input."""
+def import1():
+    #add expenses from user input
     print("\n=== Add New Expense ===")
     user_id = input("Enter user ID: ")
     category = input("Enter category (food, entertainment, gas, rent, etc.): ")
     
     while True:
         try:
-            amount = float(input("Enter amount (without $): "))
+            amount = float(input("Enter amount (without $): ")) #simply tbh
             if amount < 0:
-                print("Amount cannot be negative.")
+                print("no nega tibve")
                 continue
             break
         except ValueError:
-            print("Invalid amount. Please enter a number.")
+            print("number freakbob")
     
-    date_input = input("Enter date (YYYY-MM-DD) or press Enter for today: ")
+    date_input = input("use yyyy mmmdd ")
     if not date_input:
         date_input = datetime.now().strftime('%Y-%m-%d')
     
     add_expense(user_id, category, amount, date_input)
 
-if __name__ == "__main__":
-    initialize_expenses_csv()
+if __name__ == "__main__": #basically runsfile direct omly
+
+    excsv()

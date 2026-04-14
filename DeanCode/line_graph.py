@@ -1,18 +1,19 @@
 import matplotlib.pyplot as plt
 import numpy as np
+
 from datetime import datetime
 from collections import defaultdict
 from DeanCode.csv1 import read_expenses
-
+ #PLEASEW DONT HAVE CIRCULAR IMPORTS ON DIDDY 
 def parse_date(date_string):
-    """Parse date string to datetime object."""
+    #use datetime
     try:
         return datetime.strptime(date_string, '%Y-%m-%d')
     except ValueError:
         return None
 
-def aggregate_expenses_by_date(expenses):
-    """Aggregate expenses by date, returning average amount per date."""
+def date_1(expenses):
+   #averaged
     date_amounts = defaultdict(list)
     
     for expense in expenses:
@@ -20,7 +21,7 @@ def aggregate_expenses_by_date(expenses):
         if date_obj:
             date_amounts[date_obj].append(expense['amount'])
     
-    # Calculate average for each date
+    #other part
     result = []
     for date in sorted(date_amounts.keys()):
         avg_amount = sum(date_amounts[date]) / len(date_amounts[date])
@@ -32,20 +33,13 @@ def aggregate_expenses_by_date(expenses):
     
     return result
 
-def plot_expense_trends(user_id=None, start_date=None, end_date=None):
-    """
-    Create a line graph of expense trends over time.
-    
-    Args:
-        user_id: Optional filter by user
-        start_date: Optional start date filter (YYYY-MM-DD)
-        end_date: Optional end date filter (YYYY-MM-DD)
-    """
+def tspmo(user_id=None, start_date=None, end_date=None):
+   #date stuff i
     # Read expenses
     expenses = read_expenses(user_id)
     
     if not expenses:
-        print("No expenses found to plot.")
+        print("No expenses found plurt")
         return
     
     # Filter by date range if provided
@@ -55,14 +49,14 @@ def plot_expense_trends(user_id=None, start_date=None, end_date=None):
         expenses = [e for e in expenses if start <= parse_date(e['date']) <= end]
     
     if not expenses:
-        print("No expenses in the specified date range.")
+        print("none in range")
         return
     
     # Aggregate by date
-    aggregated = aggregate_expenses_by_date(expenses)
+    aggregated = date_1(expenses)
     
     if not aggregated:
-        print("Could not process expense data.")
+        print("you messed up")
         return
     
     # Extract data for plotting
@@ -92,4 +86,4 @@ def plot_expense_trends(user_id=None, start_date=None, end_date=None):
 
 if __name__ == "__main__":
     # Example usage
-    plot_expense_trends(user_id="abc123")
+    tspmo(user_id="abc123")

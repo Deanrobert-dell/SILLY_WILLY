@@ -2,9 +2,9 @@ import tkinter as tk
 from tkinter import messagebox, simpledialog
 from BriggsCode.briggs import create_savings_goal, check_budget_limit, add_budget_limit
 from ElijahCode.expense_management import income
-from DeanCode.csv1 import initialize_expenses_csv, import_expenses_from_input, read_expenses
-from DeanCode.line_graph import plot_expense_trends
-from DeanCode.pichart import plot_expense_pie_chart
+from DeanCode.csv1 import excsv, import1, read_expenses
+from DeanCode.line_graph import tspmo
+from DeanCode.pichart import plot1
 from Nate.NathanCode.login_or_register import FinancialCalculator
 
 user_id = "abc123"
@@ -15,6 +15,7 @@ def main_menu_gui():
     root = tk.Tk()
     root.title("NH, BH, EH, DP Financial Calculator")
     root.geometry("500x600")
+
     root.configure(padx=20, pady=20)
     root.configure(bg='#f0f0f0')
 
@@ -27,13 +28,13 @@ def main_menu_gui():
 
     # Button functions
     def handle_add_expense():
-        import_expenses_from_input()
+        import1()
 
     def handle_view_trends():
-        plot_expense_trends(user_id=user_id)
+        tspmo(user_id=user_id)
 
     def handle_view_pie():
-        plot_expense_pie_chart(user_id=user_id)
+        plot1(user_id=user_id)
 
     def handle_savings():
         create_savings_goal(user_id)
@@ -71,5 +72,5 @@ def main_menu_gui():
     root.mainloop()
 
 if __name__ == "__main__":
-    initialize_expenses_csv()
+    excsv()
     main_menu_gui()
