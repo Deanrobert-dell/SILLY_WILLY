@@ -1,5 +1,11 @@
 #BH 2nd Ortho
 import csv
+from datetime import datetime
+
+present_time = datetime.now()
+current_month = present_time.month
+current_year = present_time.year
+
 def create_savings_goal(user_id):
 	matching_user_profile = None
 	try:
@@ -20,15 +26,19 @@ def create_savings_goal(user_id):
 	necessary_money = validate_float_input(necessary_money)
 	savings_time = input("How long are you going to save for (in months)?\n")
 	savings_time = validate_float_input(savings_time)
+	while savings_time == int(savings_time) <= 0:
+		savings_time = input("Invalid input. Please enter a positive number for the number of months you will save for.\n")
 	total = round((necessary_money - matching_user_profile["balance"]) / savings_time, 2)
 	print(f"You will need to save ${total} each month to reach a total savings of ${necessary_money} in {savings_time} months.")
-# expenses is a list of dictionaries with keys "user", "category", "amount", and "date"
+# expenses is a list of dictionaries with keys "user", "category", "amount", and "date". The "date" value needs to be a datetime instance.
 def check_budget_limit(user_id, categories, expenses):
 	if categories == []:
 		print("Add a category first.")
 		return
 	selected_category = select_from_list(categories, "Which of the above categories would you like to check your budget for?\n")
 	budgets = read_budgets()
+	if budgets is None:
+		return
 	matching_budget = None
 	for budget in budgets:
 		if budget["user"] == user_id and budget["category"] == selected_category:
@@ -40,8 +50,7 @@ def check_budget_limit(user_id, categories, expenses):
 		return
 	this_month_expenses = 0
 	for expense in expenses:
-		# update this to check for the current month and year instead of hardcoding it
-		if expense["user"] == user_id and expense["category"] == selected_category and expense["date"][5:7] == "04" and expense["date"][0:4] == "2026":
+		if expense["user"] == user_id and expense["category"] == selected_category and expense["date"].month == current_month and expense["date"].year == current_year:
 			this_month_expenses += expense["amount"]
 
 	print(f"You have spent ${this_month_expenses} out of your ${matching_budget['limit']} budget for {selected_category} this month.")	
@@ -52,7 +61,8 @@ def add_budget_limit(user_id, categories):
 		return
 	selected_category = select_from_list(categories, "Which of the above categories would you like to add a budget for (please do not add the dollar sign in your amount)?\n")
 	budgets = read_budgets()
-
+	if budgets is None:
+		return
 	for budget in budgets:
 		if budget["user"] == user_id and budget["category"] == selected_category:
 			print("A budget already exists for that category.")
