@@ -5,6 +5,7 @@ while True:
         break
     except ImportError:
         print("Cannot import the module forex_python, you need to do 'pip install forex_python'")
+        break
 
 def convert(income, new_currency):
     c = CurrencyRates()
