@@ -11,9 +11,10 @@ def excsv():
             reader = csv.reader(file)
             # Check if file has headers
             first_row = next(reader, None)
+
             if not first_row or first_row[0] != 'user':
                 raise FileNotFoundError
-    except FileNotFoundError:
+    except FileNotFoundError: #idoit propp
         with open('expenses.csv', mode='w', newline='') as file:
             writer = csv.writer(file)
             writer.writerow(['user', 'category', 'amount', 'date'])
@@ -30,7 +31,7 @@ def add_expense(user_id, category, amount, date=None):
         print(f"Expense added: {category} - ${amount} on {date}")
         return True
     except Exception as e:
-        print(f"Error writing to expenses.csv: {e}")
+        print(f"messed up pluh {e}")
         return False
 
 def read_expenses(user_id=None):
@@ -51,7 +52,7 @@ def read_expenses(user_id=None):
     except FileNotFoundError:
         print("not found")
     except Exception as e:
-        print(f"Error reading expenses.csv: {e}")
+        print(f"read error{e}")
     
     return expenses
 
@@ -59,7 +60,7 @@ def import1():
     #add expenses from user input
     print("\n=== Add New Expense ===")
     user_id = input("Enter user ID: ")
-    category = input("Enter category (food, entertainment, gas, rent, etc.): ")
+    category = input("Enter category (food, entertainment, gas, rent, etc.): ") #this is where preak ahppens, and the sort by cat,
     
     while True:
         try:
