@@ -1,7 +1,7 @@
 #EHCP2 expenses
 import time as t
 
-from .currency_conversion import currency_conversion
+from .currency_conversion import convert
 
 class FinanceManager:
     def __init__(self):
@@ -67,3 +67,5 @@ class FinanceManager:
 
 user_finance = FinanceManager()
 user_finance.get_currency()
+if __name__ == "__main__":
+    user_finance.get_currency()

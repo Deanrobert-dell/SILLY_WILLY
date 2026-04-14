@@ -1,17 +1,17 @@
 import tkinter as tk
 from tkinter import messagebox, simpledialog
 from BriggsCode.briggs import create_savings_goal, check_budget_limit, add_budget_limit
-from ElijahCode.expense_management import income
+from ElijahCode.expense_management import FinanceManager
 from DeanCode.csv1 import excsv, import1, read_expenses
 from DeanCode.line_graph import tspmo
 from DeanCode.pichart import plot1
 from Nate.NathanCode.login_or_register import FinancialCalculator
 
 user_id = "abc123"
-categories = []
-expenses = []
+categories = ["food", "entertainment", "gas", "rent"]
 
 def main_menu_gui():
+    
     """Main GUI window with all financial calculator features."""
     root = tk.Tk()
     root.title("NH, BH, EH, DP Financial Calculator")
@@ -48,7 +48,9 @@ def main_menu_gui():
         add_budget_limit(user_id, categories)
 
     def handle_income():
-        income()
+        user_finance = FinanceManager()
+        user_finance.get_currency()
+
 
     # Styling
     btn_style = {"width": 30, "pady": 12, "font": ("Arial", 11), "bg": "#2E86AB", "fg": "white"}
