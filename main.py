@@ -1,67 +1,76 @@
 import tkinter as tk
-from tkinter import messagebox
+from tkinter import messagebox, simpledialog
+from BriggsCode.briggs import create_savings_goal, check_budget_limit, add_budget_limit
+from ElijahCode.expense_management import income
+from DeanCode.csv1 import excsv, import1, read_expenses
+from DeanCode.line_graph import tspmo
+from DeanCode.pichart import plot1
+from Nate.NathanCode.login_or_register import FinancialCalculator
 
-# --- Your existing logic and imports ---
-# (Keep your imports and data lists at the top as they were)
 user_id = "abc123"
 categories = ["food", "entertainment", "gas", "rent"]
-expenses = []
-
-# Placeholder functions (replace with actual implementations)
-def create_savings_goal(user_id):
-    messagebox.showinfo("Savings Goal", f"Creating savings goal for {user_id}")
-
-def check_budget_limit(user_id, categories, expenses):
-    messagebox.showinfo("Budget Check", f"Checking budget for {user_id}")
-
-def add_budget_limit(user_id, categories):
-    messagebox.showinfo("Add Budget", f"Adding budget limit for {user_id}")
-
-def income():
-    messagebox.showinfo("Expense Management", "Opening expense management")
 
 def main_menu_gui():
-    # Create the main window
+    """Main GUI window with all financial calculator features."""
     root = tk.Tk()
     root.title("NH, BH, EH, DP Financial Calculator")
-    root.geometry("400x450")
-    root.configure(padx=20, pady=20)
+    root.geometry("500x600")
 
-    # Header Label
-    header = tk.Label(root, text="FINANCIAL CALCULATOR", font=("Arial", 16, "bold"))
+    root.configure(padx=20, pady=20)
+    root.configure(bg='#f0f0f0')
+
+    # Header
+    header = tk.Label(root, text="FINANCIAL CALCULATOR", font=("Arial", 18, "bold"), bg='#f0f0f0')
     header.pack(pady=(0, 10))
     
-    welcome = tk.Label(root, text=f"Welcome, {user_id}!", font=("Arial", 10))
+    welcome = tk.Label(root, text=f"Welcome, {user_id}!", font=("Arial", 12), bg='#f0f0f0')
     welcome.pack(pady=(0, 20))
 
-    # --- Button Functions (Linking to your team modules) ---
+    # Button functions
+    def handle_add_expense():
+        import1()
+
+    def handle_view_trends():
+        tspmo(user_id=user_id)
+
+    def handle_view_pie():
+        plot1(user_id=user_id)
+
     def handle_savings():
-        # Calls your existing function from Nate/Briggs
         create_savings_goal(user_id)
 
     def handle_check_budget():
-        # Calls your existing check function
+        expenses = read_expenses(user_id)
         check_budget_limit(user_id, categories, expenses)
 
     def handle_add_budget():
         add_budget_limit(user_id, categories)
 
-    def handle_expense_mgmt():
-        # Calls Elijah's income function
+    def handle_income():
         income()
 
-    # --- UI Buttons ---
-    btn_style = {"width": 25, "pady": 10, "font": ("Arial", 10)}
+    # Styling
+    btn_style = {"width": 30, "pady": 12, "font": ("Arial", 11), "bg": "#2E86AB", "fg": "white"}
+    btn_style_danger = {"width": 30, "pady": 12, "font": ("Arial", 11), "bg": "#E74C3C", "fg": "white"}
 
-    tk.Button(root, text="1. Create Savings Goal", command=handle_savings, **btn_style).pack(pady=5)
-    tk.Button(root, text="2. Check Budget Limit", command=handle_check_budget, **btn_style).pack(pady=5)
-    tk.Button(root, text="3. Add Budget Limit", command=handle_add_budget, **btn_style).pack(pady=5)
-    tk.Button(root, text="4. Expense Management", command=handle_expense_mgmt, **btn_style).pack(pady=5)
+    # Buttons
+    tk.Label(root, text="Expense Management", font=("Arial", 12, "bold"), bg='#f0f0f0').pack(pady=(10, 5))
+    tk.Button(root, text="1. Add Expense", command=handle_add_expense, **btn_style).pack(pady=5)
+    tk.Button(root, text="2. View Expense Trends (Line Graph)", command=handle_view_trends, **btn_style).pack(pady=5)
+    tk.Button(root, text="3. View Category Breakdown (Pie Chart)", command=handle_view_pie, **btn_style).pack(pady=5)
 
-    tk.Button(root, text="Exit", command=root.quit, fg="red", width=15).pack(pady=20)
+    tk.Label(root, text="Budget & Savings", font=("Arial", 12, "bold"), bg='#f0f0f0').pack(pady=(15, 5))
+    tk.Button(root, text="4. Create Savings Goal", command=handle_savings, **btn_style).pack(pady=5)
+    tk.Button(root, text="5. Check Budget Limit", command=handle_check_budget, **btn_style).pack(pady=5)
+    tk.Button(root, text="6. Add Budget Limit", command=handle_add_budget, **btn_style).pack(pady=5)
 
-    # Start the GUI loop
+    tk.Label(root, text="Income", font=("Arial", 12, "bold"), bg='#f0f0f0').pack(pady=(15, 5))
+    tk.Button(root, text="7. Manage Income", command=handle_income, **btn_style).pack(pady=5)
+
+    tk.Button(root, text="Exit", command=root.quit, **btn_style_danger).pack(pady=20)
+
     root.mainloop()
 
 if __name__ == "__main__":
+    excsv()
     main_menu_gui()
