@@ -1,5 +1,6 @@
 #EHCP2 expenses
 import time as t
+
 from currency_conversion import *
 
 class FinanceManager:
@@ -15,7 +16,7 @@ class FinanceManager:
     def get_income(self):
         while True:
             try:
-                amount = float(input(f"What is your total monthly income in {self.currency}?\n(No symbols): "))
+                amount = float(input(f"What is your total monthly income in {self.currency}?\n(No symbols like $): "))
                 if amount <= 0:
                     print("Bro, we all know you have an income.")
                     continue
@@ -44,18 +45,25 @@ class FinanceManager:
         income = self.monthly_income
         remainder = income - total_expense
         
+        print("Now it'll ask you to enter your currency you want to convert to 3 times, if you don't want to convert just say 'n'")
         conv_income = convert(income, self.currency)
         conv_expense = convert(total_expense, self.currency)
         conv_diff = convert(abs(remainder), self.currency)
 
+        if not conv_diff:
+            conv_diff = remainder
+
+        if not conv_income:
+            conv_income = self.monthly_income
+
         print(f"\n--- Results ({self.currency}) (Recorded: {self.time_entered}) ---")
         
         if total_expense > income:
-            print(f"You exceeded your income ({conv_income}) by {conv_diff}!")
+            print(f"You exceeded your income (${conv_income:.2f}) by ${conv_diff:.2f}")
         elif total_expense == income:
             print("You matched your income exactly! Perfect balance.")
         else:
-            print(f"You have {conv_diff} left over.")
+            print(f"You have ${conv_diff:.2f} left over.")
 
 user_finance = FinanceManager()
 user_finance.get_currency()

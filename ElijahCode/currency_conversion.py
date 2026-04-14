@@ -1,7 +1,7 @@
 #EHCP2 currency conversion
 while True:
     try:
-        from forex_python.converter import CurrencyRates
+        from forex_python.converter import CurrencyRates, RatesNotAvailableError
         break
     except ImportError:
         print("Cannot import the module forex_python, you need to do 'pip install forex_python'")
@@ -12,8 +12,8 @@ def convert(income, new_currency):
     while True:
         if choice == "y":
             try: 
-                user_currency = input("What is your current currency? (e.g. USD, EUR)\n").upper()
-            except TypeError:
+                user_currency = input("What is your current (not prefered) currency? (e.g. USD, EUR)\n").upper()
+            except RatesNotAvailableError:
                 print("Not a currency!")
 
             rate = c.get_rate(user_currency, new_currency)
@@ -23,5 +23,5 @@ def convert(income, new_currency):
             print(f"Your new currency amount in {new_currency} is {new_amount:.2f}")
             return new_amount
 
-        elif choice == "n":
+        else:
             break
