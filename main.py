@@ -57,12 +57,12 @@ def main_menu_gui():
     btn_style_danger = {"width": 30, "pady": 12, "font": ("Arial", 11), "bg": "#E74C3C", "fg": "white"}
 
     # Buttons
-    tk.Label(root, text="Expense Management", font=("Arial", 12, "bold"), bg='#f0f0f0').pack(pady=(10, 5))
+    tk.Label(root, text="Expense Management", font=("Arial", 11, "bold"), bg='#f0f0f0').pack(pady=(10, 5))
     tk.Button(root, text="1. Add Expense", command=handle_add_expense, **btn_style).pack(pady=5)
     tk.Button(root, text="2. View Expense Trends (Line Graph)", command=handle_view_trends, **btn_style).pack(pady=5)
     tk.Button(root, text="3. View Category Breakdown (Pie Chart)", command=handle_view_pie, **btn_style).pack(pady=5)
 
-    tk.Label(root, text="Budget & Savings", font=("Arial", 12, "bold"), bg='#f0f0f0').pack(pady=(15, 5))
+    tk.Label(root, text="Budget & Savings", font=("Arial", 12, "bold"), bg='#f0f0f0').pack(pady=(15, 8))
     tk.Button(root, text="4. Create Savings Goal", command=handle_savings, **btn_style).pack(pady=5)
     tk.Button(root, text="5. Check Budget Limit", command=handle_check_budget, **btn_style).pack(pady=5)
     tk.Button(root, text="6. Add Budget Limit", command=handle_add_budget, **btn_style).pack(pady=5)
