@@ -51,7 +51,7 @@ class FinanceManager:
         conv_diff = convert(abs(remainder), self.currency)
 
         if not conv_diff:
-            conv_diff = (remainder * - 1)
+            conv_diff = (remainder if remainder >= 0 else -remainder)
 
         if not conv_income:
             conv_income = self.monthly_income
