@@ -5,6 +5,7 @@ from datetime import datetime
 from collections import defaultdict
 from DeanCode.csv1 import read_expenses
  #PLEASEW DONT HAVE CIRCULAR IMPORTS ON DIDDY 
+
 def parse_date(date_string):
     #use datetime
     try:
@@ -27,7 +28,7 @@ def date_1(expenses):
         avg_amount = sum(date_amounts[date]) / len(date_amounts[date])
         result.append({
             'date': date,
-            'date_str': date.strftime('%Y-%m-%d'),
+            'date_str': date.strftime('%Y-%m-%d'), # basically sets date format to graph
             'average_amount': avg_amount
         })
     
@@ -45,7 +46,8 @@ def tspmo(user_id=None, start_date=None, end_date=None):
     # Filter by date range if provided
     if start_date or end_date:
         start = parse_date(start_date) if start_date else datetime.min
-        end = parse_date(end_date) if end_date else datetime.max
+
+        end = parse_date(end_date) if end_date else datetime.max #sets max and minim without date
         expenses = [e for e in expenses if start <= parse_date(e['date']) <= end]
     
     if not expenses:
@@ -69,15 +71,18 @@ def tspmo(user_id=None, start_date=None, end_date=None):
     
     # Create plot
     plt.figure(figsize=(12, 6))
-    plt.plot(dates, amounts, marker='o', linewidth=2, label='Daily Average Expenses', color='#2E86AB')
-    plt.plot(dates, avg_line, linestyle='--', linewidth=2, label=f'Overall Average (${avg_expense:.2f})', color='red')
+    plt.plot(dates, amounts, marker='o', linewidth=2, label='Daily Average Expenses', color='#2E86AB') #makes line blue and adds markers
+    plt.plot(dates, avg_line, linestyle='--', linewidth=2, label=f'Overall Average (${avg_expense:.2f})', color='red') #adds red average line with label
     
     # Customize plot
+    #crazy formatting
     plt.title('Expense Trends Over Time', fontsize=14, fontweight='bold')
     plt.xlabel('Date', fontsize=12)
     plt.ylabel('Amount ($)', fontsize=12)
+
     plt.legend(fontsize=10)
     plt.grid(True, alpha=0.3)
+    #"True" is just alpha and makes grid lighter
     plt.xticks(rotation=45, ha='right')
     plt.tight_layout()
     
@@ -86,4 +91,4 @@ def tspmo(user_id=None, start_date=None, end_date=None):
 
 if __name__ == "__main__":
     # Example usage
-    tspmo(user_id="abc123")
+    tspmo(user_id="none") #all aceceable

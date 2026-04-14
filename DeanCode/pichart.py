@@ -1,7 +1,8 @@
 import matplotlib.pyplot as plt
 from collections import defaultdict
-from DeanCode.csv1 import read_expenses
 
+from DeanCode.csv1 import read_expenses
+# all imports ^
 def totals(expenses):
   #by cat 1s
     category_totals = defaultdict(float)
@@ -20,7 +21,7 @@ def plot1(user_id=None):
     expenses = read_expenses(user_id)
     
     if not expenses:
-        print("No expenses found to plot.")
+        print("No expenses found to plot.") #nomplots findem
         return
     
     # Calculate category totals
@@ -38,7 +39,7 @@ def plot1(user_id=None):
     amounts = list(category_totals.values())
     
     # Create color palette
-    colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', '#98D8C8', '#F7DC6F', '#BB8FCE', '#85C1E2']
+    colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', '#98D8C8', '#F7DC6F', '#BB8FCE', '#85C1E2'] #fire colorss??
     colors = colors[:len(categories)]
     
     # Create pie chart
@@ -48,7 +49,8 @@ def plot1(user_id=None):
         amounts,
         labels=categories,
         autopct='%1.1f%%',
-        colors=colors,
+        colors=colors,#colors for each slice
+        #
         startangle=90,
         textprops={'fontsize': 11}
     )
@@ -62,16 +64,17 @@ def plot1(user_id=None):
     # Add title
     total_expenses = sum(amounts)
     ax.set_title(
-        f'Expense Breakdown by Category\nTotal: ${total_expenses:.2f}',
+        f' by category total ${total_expenses:.2f}',
         fontsize=14,
         fontweight='bold',
         pad=20
     )
     
     # Add legend with amounts
-    legend_labels = [f'{cat}: ${amount:.2f}' for cat, amount in category_totals.items()]
-    ax.legend(legend_labels, loc='center left', bbox_to_anchor=(1, 0, 0.5, 1), fontsize=10)
-    
+    legend_labels = [f'{cat}: ${amount:.2f}' for cat, amount in category_totals.items()] #
+
+    ax.legend(legend_labels, loc='center left', bbox_to_anchor=(1, 0, 0.5, 1), fontsize=10) #legend outside
+
     
     plt.tight_layout()
     plt.show()
