@@ -1,6 +1,6 @@
 #EHCP2 expenses
 
-from currency_conversion import *
+from ElijahCode.currency_conversion import *  # Add folder prefix
 
 import time as t
 
@@ -39,4 +39,5 @@ def expenses(income):
                 print(f"You entered this on {time_entered}")
         except ValueError:
             print("That ain't a number bro")
-income()
+if __name__ == "__main__":
+    income()
