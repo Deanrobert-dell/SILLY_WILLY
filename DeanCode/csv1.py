@@ -59,7 +59,7 @@ def read_expenses(user_id=None):
 def import1():
     #add expenses from user input
     print("\n=== Add New Expense ===")
-    user_id = input("Enter user ID: ")
+    user_id = input("Enter user ID (use abc123 to test): ")
     category = input("Enter category (food, entertainment, gas, rent, etc.): ") #this is where preak ahppens, and the sort by cat,
     
     while True:
