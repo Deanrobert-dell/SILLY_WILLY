@@ -8,7 +8,8 @@ from DeanCode.pichart import plot1
 from Nate.NathanCode.login_or_register import FinancialCalculator
 
 user_id = "abc123"
-categories = ["food", "entertainment", "gas", "rent"]
+categories = []
+expenses = []
 
 def main_menu_gui():
     """Main GUI window with all financial calculator features."""
