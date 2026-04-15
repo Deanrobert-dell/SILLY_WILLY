@@ -72,7 +72,7 @@ def import1():
         except ValueError:
             print("number freakbob")
     
-    date_input = input("use yyyy mmmdd ")
+    date_input = input("use yyyy-mm-dd ")
     if not date_input:
         date_input = datetime.now().strftime('%Y-%m-%d')
     

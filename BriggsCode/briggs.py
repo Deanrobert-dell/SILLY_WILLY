@@ -50,8 +50,13 @@ def check_budget_limit(user_id, categories, expenses):
 		return
 	this_month_expenses = 0
 	for expense in expenses:
-		if expense["user"] == user_id and expense["category"] == selected_category and expense["date"].month == current_month and expense["date"].year == current_year:
-			this_month_expenses += expense["amount"]
+		if expense["user"] == user_id and expense["category"] == selected_category:
+			parse_date_result = parse_date(expense["date"])
+			if parse_date_result is None:
+				print(f"Invalid date format for expense: {expense}. Skipping this expense.")
+				continue
+			if parse_date_result.month == current_month and parse_date_result.year == current_year:
+				this_month_expenses += expense["amount"]
 
 	print(f"You have spent ${this_month_expenses} out of your ${matching_budget['limit']} budget for {selected_category} this month.")	
 # categories is a list of categories as strings
@@ -70,6 +75,7 @@ def add_budget_limit(user_id, categories):
 	limit = input("What's the monthly budget limit you want for this category (please do not add the dollar sign in your amount)?\n")
 	limit = validate_float_input(limit)
 	append_budget(user_id, selected_category, limit)
+	print(f"A budget of ${limit} has been set for {selected_category}.")
 def read_budgets():
 	try:
 		with open('csvfiles/budgets.csv', mode='r') as file:
@@ -106,3 +112,10 @@ def validate_float_input(num):
 				return float(num)
 			except ValueError:
 				num = input("Invalid input. Please enter a number.\n")
+#parsing function for datetime
+def parse_date(date_string):
+    #use datetime
+    try:
+        return datetime.strptime(date_string, '%Y-%m-%d')
+    except ValueError:
+        return None
